@@ -18,7 +18,7 @@ async function handleRequest(request) {
   }else{
     const apiResponse = await fetch(`${API_BASE_URL}?${searchParams}`)
     response = JSON.stringify(await apiResponse.json())
-    KV_CACHE.put(`${searchParams}`, response, { expiration: 180 })
+    KV_CACHE.put(`${searchParams}`, response, { expirationTtl: 180 })
   }
   
   return new Response(response, {
