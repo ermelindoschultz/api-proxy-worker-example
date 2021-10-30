@@ -10,7 +10,7 @@ async function handleRequest(request) {
 
   searchParams.append(API_KEY_NAME, API_KEY_VALUE)
 
-  return new Response('Hello worker!', {
-    headers: { 'content-type': 'text/plain' },
-  })
+  const apiResponse = await fetch(`${API_BASE_URL}?${searchParams}`)
+
+  return apiResponse
 }
