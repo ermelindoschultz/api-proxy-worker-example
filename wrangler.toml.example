@@ -3,6 +3,7 @@ type = "javascript"
 
 workers_dev = true
 
+[vars]
 API_BASE_URL = "YOUR API BASE URL"
 API_KEY_NAME = "YOUR API KEY NAME"
 API_KEY_VALUE = "YOUR API KEY VALUE"
