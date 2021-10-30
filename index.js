@@ -17,7 +17,7 @@ async function handleRequest(request) {
     response = cachedValue
   }else{
     const apiResponse = await fetch(`${API_BASE_URL}?${searchParams}`)
-    response = JSON.stringify(apiResponse.body)
+    response = JSON.stringify(await apiResponse.json())
     KV_CACHE.put(`${searchParams}`, response, { expiration: 180 })
   }
   
