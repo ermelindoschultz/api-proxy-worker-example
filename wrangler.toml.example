@@ -1,8 +1,8 @@
 name = "api-proxy-example"
 type = "javascript"
 
-account_id = ""
 workers_dev = true
-route = ""
-zone_id = ""
-compatibility_date = "2021-10-30"
+
+API_BASE_URL = "YOUR API BASE URL"
+API_KEY_NAME = "YOUR API KEY NAME"
+API_KEY_VALUE = "YOUR API KEY VALUE"
