@@ -10,7 +10,21 @@ async function handleRequest(request) {
 
   searchParams.append(API_KEY_NAME, API_KEY_VALUE)
 
-  const apiResponse = await fetch(`${API_BASE_URL}?${searchParams}`)
+  const cachedValue = await KV_CACHE.get(`${searchParams}`)
+  let response 
 
-  return apiResponse
+  if(cachedValue){
+    response = cachedValue
+  }else{
+    const apiResponse = await fetch(`${API_BASE_URL}?${searchParams}`)
+    response = JSON.stringify(apiResponse.body)
+    KV_CACHE.put(`${searchParams}`, response, { expiration: 180 })
+  }
+  
+  return new Response(response, {
+    status: 200,
+    headers: {
+      "content-type": "application/json"
+    }
+  })
 }
