@@ -2,7 +2,7 @@ addEventListener('fetch', event => {
   event.respondWith(handleRequest(event.request))
 })
 /**
- * Respond with hello worker text
+ * Protect and foward requests for an API that need secure key. 
  * @param {Request} request
  */
 async function handleRequest(request) {
